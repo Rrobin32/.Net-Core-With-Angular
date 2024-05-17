@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataTransferObject.DBModel;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace WebAPI.ExtensionHelper
@@ -8,12 +9,12 @@ namespace WebAPI.ExtensionHelper
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            //var user = (UserResponse)context.HttpContext.Items["User"];
-            //if (user == null)
-            //{
-            //    // not logged in
-            //    context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
-            //}
+            var user = (User)context.HttpContext.Items["User"];
+            if (user == null)
+            {
+                // not logged in
+                context.Result = new JsonResult(new { code = "401", message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
+            }
         }
     }
 }

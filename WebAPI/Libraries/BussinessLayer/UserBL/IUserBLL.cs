@@ -1,11 +1,17 @@
-﻿using Models.InputModel.UsersInputObj;
+﻿using DataTransferObject.DBModel;
+using Models.InputModel.LoginInputModel;
+using Models.InputModel.UsersInputObj;
 using Models.ResponseModel.UsersResponse;
+using System.Text;
 
 namespace BussinessLayer.UserBL
 {
     public interface IUserBLL
     {
-        UserResponse GetUser(string operatorId);
+        void AddUserInfo(AddUserInfo userInfoDto);
+        User GetUser(string userName);
         List<UserResponse> GetUserInfo(GetUserInfo userInfoDto);
+        StringBuilder ValidateUser(AddUserInfo userInfoDto);
+        StringBuilder ValidateUserCredential(LoginInputModel userInfoDto);
     }
 }

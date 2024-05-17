@@ -22,8 +22,24 @@
         "Message": "Request body can't be empty or unsupported media type for post method"
       },
       {
-        "Code": 5,
+        "Code": 101,
         "Message": "User name is already registered."
+      },
+      {
+        "Code": 102,
+        "Message": "User name is required."
+      },
+      {
+        "Code": 103,
+        "Message": "Password is required."
+      },
+      {
+        "Code": 104,
+        "Message": "First Name is required."
+      },
+      {
+        "Code": 105,
+        "Message": "Invalid Credentials."
       }      
     ]
   }

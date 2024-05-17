@@ -1,6 +1,11 @@
-﻿using DataLayer.UsersDAL;
+﻿using ConfigurationUtilities.Settings;
+using ConfigurationUtilities.Utilities;
+using DataLayer.UsersDAL;
+using DataTransferObject.DBModel;
+using Models.InputModel.LoginInputModel;
 using Models.InputModel.UsersInputObj;
 using Models.ResponseModel.UsersResponse;
+using System.Text;
 
 namespace BussinessLayer.UserBL
 {
@@ -14,14 +19,41 @@ namespace BussinessLayer.UserBL
             _iuserDAL = iuserDAL;
         }
 
-        public UserResponse GetUser(string operatorId)
+        public User GetUser(string userName)
         {
-            throw new NotImplementedException();
+            return _iuserDAL.GetUser(userName);
         }
 
         public List<UserResponse> GetUserInfo(GetUserInfo userInfoDto)
         {
             return _iuserDAL.GetUserInfo(userInfoDto);
+        }
+
+        public void AddUserInfo(AddUserInfo userInfoDto)
+        {
+            _iuserDAL.AddUserInfo(userInfoDto);
+        }
+
+        public StringBuilder ValidateUser(AddUserInfo userInfoDto)
+        {
+            StringBuilder validationMessage = new StringBuilder();
+            User user = _iuserDAL.GetUser(userInfoDto.UserName);
+            if(user.Id > 0)
+            {
+                Validators.Message(validationMessage, (int)Uservalidation.UserAlreadyExist);
+            }
+            return validationMessage;
+        }
+
+        public StringBuilder ValidateUserCredential(LoginInputModel loginInputModel)
+        {
+            StringBuilder validationMessage = new StringBuilder();
+            User user = _iuserDAL.ValidateUserCredential(loginInputModel);
+            if (user.Id == 0)
+            {
+                Validators.Message(validationMessage, (int)Uservalidation.InvalidCredentials);
+            }
+            return validationMessage;
         }
     }
 }

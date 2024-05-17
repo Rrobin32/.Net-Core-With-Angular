@@ -3,7 +3,7 @@ using ConfigurationUtilities.Settings;
 
 namespace ConfigurationUtilities.Utilities
 {
-    public sealed class Validators : Filter
+    public sealed class Validators 
     {
         public static bool Equals<T>(T constant, T value) where T : IComparable
         {
@@ -23,15 +23,6 @@ namespace ConfigurationUtilities.Utilities
                         return true;
                     }
                 }
-            }
-            return false;
-        }
-
-        public static bool Equals(string value)
-        {
-            if (!string.IsNullOrEmpty(value) && value.Equals(ConstantValues.DefaultFlag))
-            {
-                return true;
             }
             return false;
         }

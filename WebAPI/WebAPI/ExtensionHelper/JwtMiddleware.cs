@@ -1,5 +1,6 @@
 ﻿using BussinessLayer.UserBL;
 using ConfigurationUtilities.Settings;
+using DataTransferObject.DBModel;
 using Microsoft.IdentityModel.Tokens;
 using Models.ResponseModel.UsersResponse;
 using System.IdentityModel.Tokens.Jwt;
@@ -47,10 +48,10 @@ namespace WebAPI.ExtensionHelper
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var operatorId = jwtToken.Claims.First(x => x.Type == "OperatorId").Value;
+                var userName = jwtToken.Claims.First(x => x.Type == "UserName").Value;
 
                 // attach user to context on successful jwt validation
-                UserResponse userResponses = _iuserBLL.GetUser(operatorId);
+                User userResponses = _iuserBLL.GetUser(userName);
                 if(userResponses != null)
                 {
                     context.Items["User"] = userResponses;

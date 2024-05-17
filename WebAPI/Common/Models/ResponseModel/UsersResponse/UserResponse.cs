@@ -28,5 +28,11 @@ namespace Models.ResponseModel.UsersResponse
         public DateTime ModifiedOn { get; set; }
 
         public bool IsActive { get; set; }
-    }    
+    }
+
+    public class AddUserInfoResponseObj
+    {
+        public long Id { get; set; }
+        public string Message { get; set; }
+    }
 }

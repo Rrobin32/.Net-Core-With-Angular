@@ -10,11 +10,24 @@ namespace ConfigurationUtilities.Settings
     {
     }
 
-    #region Common 1000 to 1100
+    #region Common Validation 1 to 100
     public enum CommonValidationCode
     {
+        Success = 0,
+        Error = 1,
         NoRecordFound = 2
 
+    }
+    #endregion
+
+    #region User Validation 101 to 200
+    public enum Uservalidation
+    {
+        UserAlreadyExist = 101,
+        UserNameRequired = 102,
+        PasswordRequired = 103,
+        FirstNameRequired = 104,
+        InvalidCredentials = 105
     }
     #endregion
 }

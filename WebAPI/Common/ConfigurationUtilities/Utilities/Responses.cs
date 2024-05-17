@@ -10,7 +10,7 @@ namespace ConfigurationUtilities.Utilities
     {
         public static List<ResponseMessage> RecordFound()
         {
-            return ErrorDetail(0);
+            return ErrorDetail((int)CommonValidationCode.Success);
         }
 
         public static void ValidationError(List<ResponseMessage> errors, int code)
