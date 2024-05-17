@@ -1,0 +1,2 @@
+﻿Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=AmpleLogic;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DBModel -table Users -context DatabaseContext  -force
+Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=AmpleLogic;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DBModel -context DatabaseContext  -force

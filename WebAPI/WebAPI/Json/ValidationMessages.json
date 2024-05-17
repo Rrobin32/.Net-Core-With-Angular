@@ -1,0 +1,30 @@
+{
+  "ValidationMessages": {
+    "CodeMessages": [
+      {
+        "Code": 0,
+        "Message": "Success"
+      },
+      {
+        "Code": 1,
+        "Message": "An unhandled exception occurred while processing the request"
+      },
+      {
+        "Code": 2,
+        "Message": "No record found"
+      },
+      {
+        "Code": 3,
+        "Message": "The current request is currently not available"
+      },
+      {
+        "Code": 4,
+        "Message": "Request body can't be empty or unsupported media type for post method"
+      },
+      {
+        "Code": 5,
+        "Message": "User name is already registered."
+      }      
+    ]
+  }
+}
