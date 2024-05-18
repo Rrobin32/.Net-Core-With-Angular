@@ -40,5 +40,21 @@ namespace AppServices.UserService
                 return _igenericAppServices.ConvertClass(userResponse);
             }            
         }
+
+        public List<ResponseMessage> DeleteUserInfo(DeleteUserInfo deleteUserInfo, ref DeleteUserInfoResponseObj deleteUserInfoResponseObj)
+        {
+            DeleteUserInfo dto = _igenericAppServices.AutoMapper<DeleteUserInfo, DeleteUserInfo>(deleteUserInfo);
+            _iuserBLL.DeleteUserInfo(dto);
+            deleteUserInfoResponseObj.Message = dto.Message;
+            return _igenericAppServices.ConvertClass(deleteUserInfoResponseObj);
+        }
+
+        public List<ResponseMessage> UpdateUserInfo(UpdateUserInfo updateUserInfo, ref UpdateUserInfoResponseObj updateUserInfoResponseObj)
+        {
+            UpdateUserInfo dto = _igenericAppServices.AutoMapper<UpdateUserInfo, UpdateUserInfo>(updateUserInfo);
+            _iuserBLL.UpdateUserInfo(dto);
+            updateUserInfoResponseObj.Message = dto.Message;
+            return _igenericAppServices.ConvertClass(updateUserInfoResponseObj);
+        }
     }
 }

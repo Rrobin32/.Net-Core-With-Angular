@@ -55,5 +55,15 @@ namespace BussinessLayer.UserBL
             }
             return validationMessage;
         }
+
+        public void DeleteUserInfo(DeleteUserInfo dto)
+        {
+            _iuserDAL.DeleteUserInfo(dto);
+        }
+
+        public void UpdateUserInfo(UpdateUserInfo dto)
+        {
+            _iuserDAL.UpdateUserInfo(dto);
+        }
     }
 }

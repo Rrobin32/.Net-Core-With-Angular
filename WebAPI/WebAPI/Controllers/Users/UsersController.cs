@@ -39,12 +39,43 @@ namespace WebAPI.Controllers.Users
             return Ok(_iobjectToJsonConvertor.ConvertListToJSON(errors, userResponse));
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Add user info
+        /// </summary>
+        /// <param name="addUserInfo"></param>
+        /// <returns></returns>
+        [HttpPost("AddUserInfo")]
         public IActionResult AddUserInfo([FromBody] AddUserInfo addUserInfo)
         {
             AddUserInfoResponseObj addUserResponse = new();
             List<ResponseMessage> errors = _iuserAppService.AddUserInfo(addUserInfo, ref addUserResponse);
             return Ok(_iobjectToJsonConvertor.ConvertClassToJSON(errors, addUserResponse));
+        }
+
+        /// <summary>
+        /// Update User Info
+        /// </summary>
+        /// <param name="updateUserInfo"></param>
+        /// <returns></returns>
+        [HttpPost("UpdateUserInfo")]
+        public IActionResult UpdateUserInfo([FromBody] UpdateUserInfo updateUserInfo)
+        {
+            UpdateUserInfoResponseObj updateUserInfoResponseObj = new();
+            List<ResponseMessage> errors = _iuserAppService.UpdateUserInfo(updateUserInfo, ref updateUserInfoResponseObj);
+            return Ok(_iobjectToJsonConvertor.ConvertClassToJSON(errors, updateUserInfoResponseObj));
+        }
+
+        /// <summary>
+        /// Delete User Info
+        /// </summary>
+        /// <param name="updateUserInfo"></param>
+        /// <returns></returns>
+        [HttpPost("DeleteUserInfo")]
+        public IActionResult DeleteUserInfo([FromBody] DeleteUserInfo deleteUserInfo)
+        {
+            DeleteUserInfoResponseObj deleteUserInfoResponseObj = new();
+            List<ResponseMessage> errors = _iuserAppService.DeleteUserInfo(deleteUserInfo, ref deleteUserInfoResponseObj);
+            return Ok(_iobjectToJsonConvertor.ConvertClassToJSON(errors, deleteUserInfoResponseObj));
         }
 
     }

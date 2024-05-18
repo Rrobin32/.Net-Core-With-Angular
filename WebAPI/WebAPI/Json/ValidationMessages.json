@@ -1,6 +1,7 @@
 {
   "ValidationMessages": {
     "CodeMessages": [
+      //#region common validation 0 to 100
       {
         "Code": 0,
         "Message": "Success"
@@ -21,6 +22,8 @@
         "Code": 4,
         "Message": "Request body can't be empty or unsupported media type for post method"
       },
+      //#endregion common validation
+      //#region user validation 101 to 200
       {
         "Code": 101,
         "Message": "User name is already registered."
@@ -40,7 +43,12 @@
       {
         "Code": 105,
         "Message": "Invalid Credentials."
-      }      
+      },
+      {
+        "Code": 106,
+        "Message": "User Id is Required."
+      }
+      //#endregion user validation
     ]
   }
 }

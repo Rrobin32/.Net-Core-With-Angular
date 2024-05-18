@@ -68,8 +68,8 @@ namespace DataLayer.UsersDAL
                 {
                     try
                     {
-                        User user = _igenericAppServices.AutoMapper<AddUserInfo, User>(userInfoDto);                        
-                        dbContext.Add(user);                        
+                        User user = _igenericAppServices.AutoMapper<AddUserInfo, User>(userInfoDto);
+                        dbContext.Add(user);
                         dbContext.SaveChanges();
 
                         userInfoDto.Id = user.Id;
@@ -78,7 +78,7 @@ namespace DataLayer.UsersDAL
 
                         userInfoDto.Message = "User added successfully";
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         userInfoDto.Message = "Error Occured!!";
                         transaction.Rollback();
@@ -114,6 +114,69 @@ namespace DataLayer.UsersDAL
                 else
                 {
                     return user;
+                }
+            }
+        }
+
+        public void DeleteUserInfo(DeleteUserInfo dto)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                using (var transaction = dbContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var user = new User()
+                        {
+                            Id = (long)dto.Id
+                        };
+   
+                        dbContext.Entry(user).State = EntityState.Deleted;
+                        dbContext.SaveChanges();
+                        transaction.Commit();
+                        dto.Message = "user deleted successfully!";
+
+                    }
+                    catch (Exception ex)
+                    {
+                        dto.Message = "Error Occured!!";
+                        transaction.Rollback();
+                    }
+                }
+            }
+        }
+
+        public void UpdateUserInfo(UpdateUserInfo dto)
+        {
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                using (var transaction = dbContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var userData = dbContext.Users.Where(p => p.Id == dto.Id);
+                        if (userData != null)
+                        {
+                            var user = _igenericAppServices.AutoMapper<UpdateUserInfo, User>(dto);
+                            if (user != null)
+                            {
+                                dbContext.Update(user);
+                                dbContext.SaveChanges();
+                                transaction.Commit();
+
+                                dto.Message = "user updated successfully!";
+                            }
+                        }
+                        else
+                        {
+                            dto.Message = "user not available";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        dto.Message = "Error Occured!!";
+                    }
                 }
             }
         }

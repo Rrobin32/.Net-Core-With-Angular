@@ -28,7 +28,7 @@ namespace WebAPI.Controllers.Login
         /// </summary>
         /// <param name="loginInputModel"></param>
         /// <returns>token</returns>
-        [HttpGet]
+        [HttpGet("Login")]
         public IActionResult Login([FromQuery] LoginInputModel loginInputModel)
         {
             LoginResponse loginResponse = new();

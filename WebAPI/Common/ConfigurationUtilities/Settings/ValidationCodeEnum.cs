@@ -27,7 +27,8 @@ namespace ConfigurationUtilities.Settings
         UserNameRequired = 102,
         PasswordRequired = 103,
         FirstNameRequired = 104,
-        InvalidCredentials = 105
+        InvalidCredentials = 105,
+        UserIdRequired = 106
     }
     #endregion
 }

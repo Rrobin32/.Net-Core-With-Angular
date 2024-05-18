@@ -9,6 +9,8 @@ namespace BussinessLayer.UserBL
     public interface IUserBLL
     {
         void AddUserInfo(AddUserInfo userInfoDto);
+        void DeleteUserInfo(DeleteUserInfo dto);
+        void UpdateUserInfo(UpdateUserInfo dto);
         User GetUser(string userName);
         List<UserResponse> GetUserInfo(GetUserInfo userInfoDto);
         StringBuilder ValidateUser(AddUserInfo userInfoDto);

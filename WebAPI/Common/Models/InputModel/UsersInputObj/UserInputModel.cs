@@ -37,5 +37,28 @@ namespace Models.InputModel.UsersInputObj
         public DateTime ModifiedOn { get; set; }
         public bool IsActive { get; set; }
         public string? Message { get; set; }
+    } 
+    
+    public class UpdateUserInfo
+    {
+        [CustomRequired((int)Uservalidation.UserNameRequired)]
+        public long? Id { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string? LastName { get; set; }
+        public long ModifiedBy { get; set; }
+        public DateTime ModifiedOn { get; set; }
+        public bool IsActive { get; set; }
+        public string? Message { get; set; }
+        public long CreatedBy { get; set; }
+        public DateTime CreatedOn { get; set; }
+    }
+
+    public class DeleteUserInfo
+    {
+        [CustomRequired((int)Uservalidation.UserNameRequired)]
+        public long? Id { get; set; }
+        public string? Message { get; set; }
     }
 }

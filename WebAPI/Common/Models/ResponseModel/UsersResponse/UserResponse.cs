@@ -35,4 +35,14 @@ namespace Models.ResponseModel.UsersResponse
         public long Id { get; set; }
         public string Message { get; set; }
     }
+
+    public class UpdateUserInfoResponseObj
+    {
+        public string Message { get; set; }
+    }
+
+    public class DeleteUserInfoResponseObj
+    {
+        public string Message { get; set; }
+    }
 }
