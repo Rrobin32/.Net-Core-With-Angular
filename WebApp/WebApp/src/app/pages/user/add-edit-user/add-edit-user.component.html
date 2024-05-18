@@ -1,0 +1,26 @@
+<div class="d-flex flex-row bd-highlight mb-3">
+  <div class="p-2 w-100 bd-highlight">
+    <div class="input-group mb-3">
+      <span class="input-group-text" style="width:25%">User Name</span>
+      <input type="text" class="form-control" [(ngModel)]="UserName">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" style="width:25%">First Name</span>
+      <input type="text" class="form-control" [(ngModel)]="FirstName">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" style="width:25%">Last Name</span>
+      <input type="text" class="form-control" [(ngModel)]="LastName">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" style="width:25%">Password</span>
+      <input type="text" class="form-control" [(ngModel)]="Password">
+    </div>
+  </div>
+</div>
+<button type="button" (click)="addUser()" *ngIf="usr.Id=='0'" class="btn btn-primary">
+  Create
+</button>
+<button type="button" (click)="updateUser()" *ngIf="usr.Id!='0'" class="btn btn-primary">
+  Update
+</button>
